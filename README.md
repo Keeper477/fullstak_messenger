@@ -13,7 +13,7 @@ docker-compose up --build
 
 *Start Backend*
 ```
-mvn spring-boot:run
+./gradlew run
 ```
 
 *Start Frontend*
