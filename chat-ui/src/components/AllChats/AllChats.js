@@ -43,7 +43,7 @@ const AllChats = ({username}) => {
         });
         return (
             <div>
-                { flag ? <SomeChats id={chatRoom.id} name={chatRoom.name}/> : null }
+                { flag ? <a href={`/chats/${chatRoom.id}`} className="text"><SomeChats  name={chatRoom.name}/></a> : null }
             </div>
         );
     };
@@ -56,9 +56,9 @@ const AllChats = ({username}) => {
     if (!chats) return null;
     
     return (
-        <div>
-            {chats.map(chat => (renderChat(chat, user)))}
-        </div>
+        <ul class="first">
+             {chats.map(chat => (renderChat(chat, user)))}
+        </ul>
     );
 };
 

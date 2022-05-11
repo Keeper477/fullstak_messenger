@@ -9,6 +9,7 @@ import {
   Route,
   Routes
 } from "react-router-dom";
+import Logout from './components/Logout/Logout';
 
 const App = () => {
 
@@ -20,6 +21,7 @@ const App = () => {
             <Route path="/"  element={<Chats />}/>
             <Route path="/registration" element={<RegistrationForm/>}/>
             <Route path="/login" element={<LoginForm/>}/>
+            <Route path="/logout" element={<Logout/>}/>
             <Route path="/chats/:id" element={<Chat />} />
           </Routes>
         </Router>

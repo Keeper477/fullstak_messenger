@@ -9,6 +9,8 @@ import chatAPI from '../services/chatapi';
 import LoginForm from '../components/LoginForm/LoginForm';
 import useToken from '../components/token/useToken';
 
+import { Navigate } from 'react-router-dom';
+
 
 const SOCKET_URL = 'http://localhost:8080/ws-chat/';
 
@@ -20,9 +22,9 @@ const Chat = () => {
     console.log(username);
 
     
-    const { token, setToken } = useToken();
+    const { token } = useToken();
     if (!token)
-        return <LoginForm setToken={setToken}/>
+        return <Navigate to={'/login'} />
 
     let onConnected = () => {
     console.log("Connected!!");
@@ -46,25 +48,28 @@ const Chat = () => {
 
     return(
         <div>
-            <SockJsClient
-            url={SOCKET_URL}
-            topics={['/topic/group']}
-            onConnect={onConnected}
-            onDisconnect={console.log("Disconnected!")}
-            onMessage={msg => onMessageReceived(msg)}
-            debug={false}
-            />
-            <div className="messages-list">
-            <PreviousMessages
-            username={username}
-            id={id}
-            />
-            <Messages
-            messages={messages}
-            username={username}
-            />
+            <div className="Head"><a className='but' href='/'>Назад</a><h1>Чат</h1><a className='but' href='/logout'>Выйти</a></div>
+            <div className="App">
+                <SockJsClient
+                url={SOCKET_URL}
+                topics={['/topic/group']}
+                onConnect={onConnected}
+                onDisconnect={console.log("Disconnected!")}
+                onMessage={msg => onMessageReceived(msg)}
+                debug={false}
+                />
+                <div className="messages-list">
+                <PreviousMessages
+                username={username}
+                id={id}
+                />
+                <Messages
+                messages={messages}
+                username={username}
+                />
+                </div>
+                <Input onSendMessage={onSendMessage} />
             </div>
-            <Input onSendMessage={onSendMessage} />
         </div>
     );
 };

@@ -42,49 +42,49 @@ const RegistrationForm = () => {
       };
 
     return (
-        <div>
+        <div class="container">
+            <div class="login">
             <h1>Регистрация</h1>
             <form onSubmit={handleSubmit}>
                 <label>
                     <p>Имя пользователя</p>
-                    <input type="text" onChange={e => setUserName(e.target.value)}/>
+                    <input class="myinput" type="text" onChange={e => setUserName(e.target.value)}/>
                 </label>
                 <label>
                     <p>Пароль</p>
-                    <input type="password" onChange={e => setPassword(e.target.value)}/>
+                    <input class="myinput" type="password" onChange={e => setPassword(e.target.value)}/>
                 </label>
-                <p>
-                <label>Developer</label>
-                <input
-                    type="checkbox"
-                    label="Developer"
-                    value={developer}
-                    onChange={handleChangeOne}
-                />
+                <p class="mylabel">
+                    <label>
+                        <input type="checkbox" label="Developer"
+                        value={developer}
+                        onChange={handleChangeOne}/>
+                        Developer
+                    </label>
+                    <label>
+                        <input type="checkbox" label="Tester"
+                        value={tester}
+                        onChange={handleChangeTwo}/>
+                        Tester
+                    </label>
+                    <label>
+                        <input type="checkbox" label="Admin"
+                        value={admin}
+                        onChange={handleChangeThree}/>
+                        Admin
+                    </label>
                 </p>
-                <p>
-                <label>Tester</label>
-                <input
-                    type="checkbox"
-                    label="Tester"
-                    value={tester}
-                    onChange={handleChangeTwo}
-                />
-                </p>
-                <p>
-                <label>Admin</label>
-                <input type="checkbox"
-                    label="Admin"
-                    value={admin}
-                    onChange={handleChangeThree}
-                />
-                </p>
-
-                <div>
-                    <button type="submit">Отправить</button>
-                </div>
+                <p class="remember_me">
+                        <label class="login-help">
+                          <a href="/login">Вход</a>
+                        </label>
+                    </p>
+                    <p class="submit">
+                        <input class="myinput" type="submit" name="commit" value="Зарегистрироваться"/>
+                    </p>
             </form>
             <NotificationContainer/>
+        </div>
         </div>
     )
 }
