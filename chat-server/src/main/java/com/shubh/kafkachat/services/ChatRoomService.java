@@ -17,9 +17,8 @@ public class ChatRoomService {
     private ChatRoomRepository chatRoomRepository;
 
     @Transactional
-    public ChatRoom addChatRoom(List<Role> roleList) {
-        ChatRoom chatRoom = new ChatRoom();
-        chatRoom.setRoleList(roleList);
+    public ChatRoom addChatRoom(ChatRoom chatRoom) {
+        chatRoom.setId(chatRoomRepository.count() + 1);
         chatRoomRepository.save(chatRoom);
         return chatRoom;
     }

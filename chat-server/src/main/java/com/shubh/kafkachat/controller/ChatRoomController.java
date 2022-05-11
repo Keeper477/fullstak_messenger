@@ -4,9 +4,7 @@ import com.shubh.kafkachat.model.ChatRoom;
 import com.shubh.kafkachat.model.Message;
 import com.shubh.kafkachat.services.ChatRoomService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -26,5 +24,9 @@ public class ChatRoomController {
     @GetMapping("/api/getChatRoom/{id}")
     public ChatRoom getChatRoom(@PathVariable int id){
         return chatRoomService.getChatRoom(id);
+    }
+    @PostMapping("/api/chatRoom")
+    public ChatRoom addChatRoom(@RequestBody ChatRoom chatRoom){
+        return chatRoomService.addChatRoom(chatRoom);
     }
 }
