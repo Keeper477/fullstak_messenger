@@ -11,14 +11,9 @@ A Realtime Chat Application built using React and Kafka as MessageBroker
 docker-compose up --build
 ```
 
-*Create a Topic*
-```
-kafka-topics --create --topic kafka-chat --zookeeper localhost:2181 --replication-factor 1 --partitions 1
-```
-
 *Start Backend*
 ```
-mvn spring-boot:run
+./gradlew run
 ```
 
 *Start Frontend*
